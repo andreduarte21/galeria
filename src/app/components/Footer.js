@@ -32,11 +32,26 @@ const Footer = (images, index) => {
     return (
         <StyledFooter>
             <LinkContainer>
-                <WhatsappIcon size={48} round onClick={handleOnSubmit} style={{ cursor: 'pointer' }} />
-                <FacebookMessengerIcon size={48} round />
-                <FacebookIcon size={48} round />
-                <TelegramIcon size={48} round />
-                <TwitterIcon size={48} round />
+                <WhatsappShareButton
+                    url='https://galeria-xi.vercel.app/nao-trouxeste-preservativo.jpeg'
+                >
+                    <WhatsappIcon size={48} round />
+                </WhatsappShareButton>
+                <FacebookMessengerShareButton>
+                    <FacebookMessengerIcon size={48} round />
+                </FacebookMessengerShareButton>
+                <FacebookShareButton
+                    url="test">
+                    <FacebookIcon size={48} round />
+                </FacebookShareButton>
+                <TelegramShareButton
+                    url="test">
+                    <TelegramIcon size={48} round />
+                </TelegramShareButton>
+                <TwitterShareButton
+                    url="test">
+                    <TwitterIcon size={48} round />
+                </TwitterShareButton>
             </LinkContainer>
         </StyledFooter>
     )
