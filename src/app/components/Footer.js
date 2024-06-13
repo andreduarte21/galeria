@@ -29,6 +29,23 @@ const Footer = (images, index) => {
         }
     }
 
+    const shareImage = async () => {
+        const response = await fetch("nao-trouxeste-preservativo.jpeg");
+        console.log(response)
+        const blob = await response.blob();
+        const file = new File([blob], 'share.jpeg', { type: 'image/jpeg' });
+
+        const shareData = {
+            files: [file]
+        };
+
+        if (navigator.canShare && navigator.canShare(shareData)) {
+            await navigator.share(shareData)
+        } else {
+            console.error("Browser not supported")
+        }
+    }
+
     return (
         <StyledFooter>
             <LinkContainer>
@@ -52,6 +69,7 @@ const Footer = (images, index) => {
                     url="test">
                     <TwitterIcon size={48} round />
                 </TwitterShareButton>
+                <button onClick={shareImage}>Test</button>
             </LinkContainer>
         </StyledFooter>
     )

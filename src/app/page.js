@@ -10,7 +10,7 @@ import ArrowButton from './components/ArrowButton';
 export default function Home() {
 
   const [currentImageIndex, setCurrentIndex] = useState(0);
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
 
   const gotoPrevious = () =>
     currentImageIndex > 0 && setCurrentIndex(currentImageIndex - 1);
