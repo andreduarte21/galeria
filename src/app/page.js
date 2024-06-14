@@ -36,7 +36,7 @@ export default function Home() {
           onClose={() => setOpen(false)}
           images={lightboxImages}
           currentIndex={currentImageIndex}
-          renderFooter={() => <Footer />}
+          renderFooter={() => <Footer images={lightboxImages} index={currentImageIndex}/>}
           renderPrevButton={({ canPrev }) => (
             <ArrowButton
               position="left"

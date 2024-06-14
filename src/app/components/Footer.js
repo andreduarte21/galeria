@@ -13,24 +13,13 @@ import {
     FacebookMessengerIcon,
 } from "react-share";
 
-const Footer = (images, index) => {
-    async function handleOnSubmit() {
-        const response = await fetch(images[index].src);
-        const blob = await response.blob();
-        const file = new File([blob], 'share.jpeg', { type: blob.type });
-        if (navigator.share) {
-            await navigator.share({
-                files: [file]
-            })
-                .then(() => console.log('Successful share'))
-                .catch((error) => console.log('Error in sharing', error));
-        } else {
-            console.log(`system does not support sharing files.`);
-        }
-    }
+const Footer = (images) => {
+
+    const imagesArray = images.images
+    const imageIndex = images.index
 
     const shareImage = async () => {
-        const response = await fetch("nao-trouxeste-preservativo.jpeg");
+        const response = await fetch(imagesArray[imageIndex].src);
         console.log(response)
         const blob = await response.blob();
         const file = new File([blob], 'share.jpeg', { type: 'image/jpeg' });
@@ -48,46 +37,12 @@ const Footer = (images, index) => {
 
     return (
         <StyledFooter>
-            <LinkContainer>
-                <WhatsappShareButton
-                    url='https://galeria-xi.vercel.app/nao-trouxeste-preservativo.jpeg'
-                >
-                    <WhatsappIcon size={48} round />
-                </WhatsappShareButton>
-                <FacebookMessengerShareButton>
-                    <FacebookMessengerIcon size={48} round />
-                </FacebookMessengerShareButton>
-                <FacebookShareButton
-                    url="test">
-                    <FacebookIcon size={48} round />
-                </FacebookShareButton>
-                <TelegramShareButton
-                    url="test">
-                    <TelegramIcon size={48} round />
-                </TelegramShareButton>
-                <TwitterShareButton
-                    url="test">
-                    <TwitterIcon size={48} round />
-                </TwitterShareButton>
-                <button onClick={shareImage}>Test</button>
-            </LinkContainer>
+            <button className='button-share' onClick={shareImage}>Partilha esta imagem nas Redes Sociais</button>
         </StyledFooter>
     )
 }
 
 export default Footer
-
-
-const LinkContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 20px 0;
-  background: rgb(0, 0, 0, 0.25);
-  border-radius: 16px;
-  width: 50%;
-  padding: 10px
-`;
 
 const StyledFooter = styled.footer`
   display: flex;
